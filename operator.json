@@ -1,0 +1,13 @@
+{
+  "name": "Read PamChip Barcode",
+  "description": "Operator for reading the componenents of 9-digit Pamchip barcode",
+  "authors": [
+    "pamgene"
+  ],
+  "tags": [
+    "QC"
+  ],
+  "urls": [
+    "https://github.com/pamgene/barcode_operator"
+  ]
+}
