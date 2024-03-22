@@ -1,6 +1,6 @@
 {
-  "name": "Read PamChip Barcode",
-  "description": "Operator for reading the componenents of 9-digit Pamchip barcode",
+  "name": "Outlier Detection",
+  "description": "Operator for flagging outliers with iqr method",
   "authors": [
     "pamgene"
   ],
@@ -8,6 +8,14 @@
     "QC"
   ],
   "urls": [
-    "https://github.com/pamgene/barcode_operator"
+    "https://github.com/pamgene/detect_outliers_operator"
+  ],
+    "properties": [
+    {
+      "kind": "NumericProperty",
+      "name": "Threshold",
+      "defaultValue": 1.5,
+      "description": "threshold for flagging outliers"
+    }
   ]
 }
