@@ -12,7 +12,7 @@
   ],
     "properties": [
     {
-      "kind": "NumericProperty",
+      "kind": "DoubleProperty",
       "name": "Threshold",
       "defaultValue": 1.5,
       "description": "threshold for flagging outliers"
