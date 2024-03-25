@@ -45,7 +45,7 @@ dfr = ctx$rselect() %>%
 dfc = ctx$cselect() %>% 
   mutate(.ci = 0:(n()-1))
 
-result = result %>% 
+result %>% 
   left_join(dfc, by = ".ci") %>% 
   left_join(dfr, by = ".ri") %>% 
 #  select(-.ci, -.ri) %>%
