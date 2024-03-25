@@ -8,4 +8,3 @@ getOption("tercen.workflowId")
 getOption("tercen.stepId")
 
 source("./main.R")
- 

@@ -8,7 +8,7 @@ rlm.residuals = function(df){
   
   df %>% 
     mutate(residual = residuals(fit)) %>% 
-    dplyr::select(.sids, residual)
+    dplyr::select( x = .x, value = .y, residual)
 }
 
 iqrDetect = function(x, thr = 1.5){
@@ -24,7 +24,7 @@ threshold <- ctx$op.value('Threshold', as.numeric, 1.5)
 if(ctx$hasXAxis){
   # use rlm regression
   result = ctx  %>% 
-    select(.ci, .ri, .sids, .y, .x) %>% 
+    select(.ci, .ri, .y, .x) %>% 
     group_by(.ci, .ri) %>% 
     do(rlm.residuals(.)) %>% 
     mutate(outlier = iqrDetect(residual, threshold) %>%  as.numeric) %>% 
@@ -35,13 +35,30 @@ if(ctx$hasXAxis){
     select(.ci, .ri, .y) %>% 
     group_by(.ci, .ri) %>% 
     mutate(outlier = iqrDetect(.y, threshold) %>%  as.numeric) %>% 
-    select(.ci, .ri,.sids,  outlier) %>% 
+    select(.ci, .ri, value = .y,  outlier) %>% 
     ungroup()
 }
 
-result %>% 
+dfr = ctx$rselect() %>% 
+  mutate(.ri = 0:(n()-1))
+
+dfc = ctx$cselect() %>% 
+  mutate(.ci = 0:(n()-1))
+
+result = result %>% 
+  left_join(dfc, by = ".ci") %>% 
+  left_join(dfr, by = ".ri") %>% 
+#  select(-.ci, -.ri) %>%
   ctx$addNamespace() %>% 
   ctx$save()
+
+
+  
+
+
+
+  
+  
 
 
 
