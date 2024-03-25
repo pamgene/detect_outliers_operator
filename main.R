@@ -39,16 +39,7 @@ if(ctx$hasXAxis){
     ungroup()
 }
 
-dfr = ctx$rselect() %>% 
-  mutate(.ri = 0:(n()-1))
-
-dfc = ctx$cselect() %>% 
-  mutate(.ci = 0:(n()-1))
-
 result %>% 
-  left_join(dfc, by = ".ci") %>% 
-  left_join(dfr, by = ".ri") %>% 
-#  select(-.ci, -.ri) %>%
   ctx$addNamespace() %>% 
   ctx$save()
 
