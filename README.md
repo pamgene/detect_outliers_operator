@@ -26,7 +26,7 @@ Output relations|.
 
 ##### Details
 
-
+https://www.scribbr.com/statistics/outliers/
 
 
 
